@@ -6,12 +6,22 @@ function updateTime() {
     }
 function clockTime() {
   var today = new Date();
-  var hour = today.getHours().toString();
-  var min = today.getMinutes().toString();
-  var second = today.getSeconds().toString();
+  var term = " AM";
+  var hour = today.getHours();
+    if (hour > 12){
+      hour = hour - 12;
+      term = " PM";
+    }else if (hour === 12 ){
+      term = " PM";
+    }else if (hour === 0){
+      hour = 12;
+    }
+
+  var min = today.getMinutes();
+  var second = today.getSeconds();
 
   var clock = document.getElementById("clock");
 
-  clock.innerHTML =  hour + ":" + min + ":" + second;
+  clock.innerHTML =  hour.toString() + ":" + min.toString() + ":" + second.toString() + term;
 
 }
